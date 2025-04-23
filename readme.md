@@ -23,27 +23,15 @@ Este documento describe los pasos para configurar **Jenkins** y habilitar **noti
 
 ---
 
-## Paso 2: Configurar SMTP de Gmail
+## Paso 2: Crear credenciales de Gmail
 
-1. Ir a **Manage Jenkins > Configure System**
-2. Buscar la sección **Extended E-mail Notification**
-3. Completar los campos:
+1. Ir a **Manage Jenkins > Credentials > (global) > Add Credentials**
+2. Tipo: `Username with password`
+3. Completar:
 
-| Campo                     | Valor                         |
-|---------------------------|-------------------------------|
-| SMTP server               | `smtp.gmail.com`              |
-| SMTP port                 | `587`                         |
-| Use SSL                   | (desactivado)                 |
-| Use TLS                   | (activado)                   |
-| Default user email suffix | (dejar vacío o usar tu dominio) |
-
-4. Marcar SMTP Authentication
-5. En Credentials, crear nuevas credenciales:
-
-   - Tipo: Username with password
-   - Username: tu-correo@gmail.com
-   - Password: contraseña de aplicación Gmail (ver paso siguiente)
-   - ID sugerido: gmail-creds
+   - **Username**: tu-correo@gmail.com
+   - **Password**: contraseña de aplicación generada en Gmail (ver paso 3)
+   - **ID**: `gmail-creds` (o cualquier identificador personalizado)
 
 ---
 
@@ -56,7 +44,25 @@ Este documento describe los pasos para configurar **Jenkins** y habilitar **noti
 
 ---
 
-## Paso 4: Probar envío de correo
+## Paso 4: Configurar SMTP de Gmail
+
+1. Ir a **Manage Jenkins > Configure System**
+2. Buscar la sección **Extended E-mail Notification**
+3. Completar los campos:
+
+| Campo                     | Valor                         |
+|---------------------------|-------------------------------|
+| SMTP server               | `smtp.gmail.com`              |
+| SMTP port                 | `587`                         |
+| Use SSL                   | (desactivado)                 |
+| Use TLS                   | (activado)                    |
+| SMTP Authentication       | ✅ marcado                    |
+| Credentials               | Selecciona: `gmail-creds`     |
+| Default user email suffix | (dejar vacío o usar @gmail.com) |
+
+---
+
+## Paso 5: Probar envío de correo
 
 1. En la sección **Extended E-mail Notification**, clic en:
 
@@ -67,7 +73,7 @@ Este documento describe los pasos para configurar **Jenkins** y habilitar **noti
 
 ---
 
-## Paso 5: Agregar notificación al Jenkinsfile
+## Paso 6: Agregar notificación al Jenkinsfile
 
 Dentro del bloque `pipeline { ... }`, agrega:
 
@@ -97,4 +103,4 @@ Cada vez que se ejecute un pipeline:
 ## Autor
 
 Franklin Cappa Ticona  
-DevOps Engineer · DBCODE Consulting
+DevOps Engineer · DBCode Consulting
