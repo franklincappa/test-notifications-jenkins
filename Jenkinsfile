@@ -50,7 +50,7 @@ pipeline {
                         ✅ El pipeline *${env.JOB_NAME}* se ejecutó correctamente.
                         🔗 Ver detalles: ${env.BUILD_URL}
                         📁 Rama: ${env.BRANCH_NAME ?: 'master'}""",
-                     to: 'fragotech.it@gmail.com'
+                     to: 'franklincappa@gmail.com'
         }
 
         failure {
@@ -60,7 +60,7 @@ pipeline {
                      🔗 Ver detalles: ${env.BUILD_URL}
                      📁 Rama: ${env.BRANCH_NAME ?: 'master'}
                      """,
-                     to: 'fragotech.it@gmail.com'
+                     to: 'franklincappa@gmail.com'
         }
     }
 }
